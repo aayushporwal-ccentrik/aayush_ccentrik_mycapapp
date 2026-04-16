@@ -11,8 +11,9 @@ context master
     PRODUCT_ID: String(28);
     TYPE_CODE: String(2);
     CATEGORY: String(32);
-    DESCRIPTION: String(255);
-    SUPPLIER_GUID: Association to buissnesspartner;
+    //Adding localized to apply internationalization
+    DESCRIPTION: localized String(255);
+    SUPPLIER_GUID: Association to businesspartner;
     TAX_TARIF_CODE: Integer;
     MEASURE_UNIT: String(2);
     WEIGHT_MEASURE: Decimal(5,2);
@@ -24,7 +25,7 @@ context master
     HEIGHT: Decimal(15,2);
     DIM_UNIT: String(2);
 } 
-    entity buissnesspartner
+    entity businesspartner
     {
         key NODE_KEY : commons.GUID;
         BP_ROLE : String(2);
@@ -50,7 +51,7 @@ context master
         VAL_END_DATE : Date;
         LATITUDE : Decimal;
         LONGITUDE : Decimal;
-        buissnesspartner : Association to one buissnesspartner on buissnesspartner.ADDRESS_GUID = $self;
+        businesspartner : Association to one businesspartner on businesspartner.ADDRESS_GUID = $self;
     }
 
     entity employees : cuid
@@ -69,4 +70,24 @@ context master
         bankId : String(8);
         bankName : String(64);
     }
+}
+
+
+context transaction {
+    
+    entity purchaseorder : commons.Amount {
+    key NODE_KEY: commons.GUID;
+    PO_ID: String(40);
+    PARTNER_GUID: Association to one master.businesspartner;
+    LIFECYCLE_STATUS: String(1);
+    OVERALL_STATUS: String(1);
+    Items: Composition of many poitems on Items.PARENT_KEY = $self;
+};
+
+entity poitems : commons.Amount {
+    key NODE_KEY: commons.GUID;
+    PARENT_KEY: Association to one purchaseorder;
+    PO_ITEM_POS: Integer;
+    PRODUCT_GUID: Association to one master.product;
+};
 }

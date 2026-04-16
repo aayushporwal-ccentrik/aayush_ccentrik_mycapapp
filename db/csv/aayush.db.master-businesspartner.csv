@@ -1,0 +1,6 @@
+NODE_KEY,BP_ROLE,EMAIL_ADDRESS,PHONE_NUMBER,FAX_NUMBER,WEB_ADDRESS,BP_ID,COMPANY_NAME,ADDRESS_GUID_NODE_KEY
+bp1,01,supplier1@mail.com,9876543210,,www.supplier1.com,BP001,Supplier One,addr1
+bp2,02,supplier2@mail.com,9123456780,,www.supplier2.com,BP002,Supplier Two,addr2
+bp3,01,,9988776655,,,BP003,Supplier Three,addr3
+bp4,03,customer@mail.com,,,www.customer.com,BP004,Customer Pvt Ltd,
+bp5,01,,,,,BP005,Supplier Five,addr1
