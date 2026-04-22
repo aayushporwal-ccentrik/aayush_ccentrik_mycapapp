@@ -1,0 +1,109 @@
+
+@base_url = http://localhost:4004/odata/v4/CatalogService
+
+### Test
+GET {{base_url}}/EmployeeSet
+
+### Count
+GET {{base_url}}/EmployeeSet/$count
+
+###Get the Service document
+GET http://localhost:4004/odata/v4/CatalogService
+
+###Get to show metadara of service
+GET http://localhost:4004/odata/v4/CatalogService/$metadata
+
+### Read to show all employees
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Get to show count
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Get to show pagination, $top
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=1
+
+###Get to show pagination, $top, $skip
+GET {{base_url}}/EmployeeSet?$top=2&$skip=1
+
+###Selectfew fields, $select should be in small
+GET {{base_url}}/EmployeeSet?$select=nameFirst,nameLast,email
+
+###GET call with filtering of data
+GET {{base_url}}/EmployeeSet?$filter=sex eq 'M'
+
+###GET call with pattern match
+GET {{base_url}}/EmployeeSet?$filter=Contains(nameFirst,'ch')
+
+###POST call to insert PO and items togather
+POST {{base_url}}/POs
+Content-Type: application/json
+
+{
+  "NODE_KEY": "po6",
+  "PO_ID": "PO1001",
+  "LIFECYCLE_STATUS": "N",
+  "OVERALL_STATUS": "A",
+
+  "Items": [
+    {
+      "NODE_KEY": "item6",
+      "PO_ITEM_POS": 10,
+      "PRODUCT_GUID_NODE_KEY": "P1001"
+    },
+    {
+      "NODE_KEY": "item7",
+      "PO_ITEM_POS": 20,
+      "PRODUCT_GUID_NODE_KEY": "P1001"
+    }
+  ]
+}
+
+
+###PATCH
+PATCH {{base_url}}/EmployeeSet(8c1f3b6a-6c9e-4a2f-b2c3-1e9a8f5c1111)
+Content-Type: application/json
+
+{
+    "nameLast": "Arnab"
+}
+
+###POST in employee
+POST {{base_url}}/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Arvind",
+  "nameLast": "Porwal",
+  "nameInitials": "AP",
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "9876543210",
+  "email": "aayush@mail.com",
+  "CURRENCY": "INR",
+  "salaryAmount": 5000000,
+  "accountNumber": "123456789012",
+  "bankId": "SBIN0001",
+  "bankName": "SBI"
+}
+
+
+### PATCH for above
+PATCH  {{base_url}}/EmployeeSet(151feebb-a4f9-4e28-94a2-d7d4136c0488)
+Content-Type: application/json
+
+{
+    "salaryAmount": 9000000
+}
+
+### callinfg the funcn non instance bound
+GET http://localhost:4004/odata/v4/CatalogService/getMostExpensiveOrder()
+
+### GET PO
+GET {{base_url}}/POs
+
+
+###POST for Action
+POST  {{base_url}}/POs('po1')/CatalogService.boost
+Content-Type: application/json
+
+{}

@@ -1,0 +1,24 @@
+using {aayush.db.master, aayush.db.transaction} from '../db/data-model';
+using { aayush.views.CDSViews } from '../srv/CDSViews';
+
+
+
+service CatalogService @(path : 'CatalogService'){
+entity EmployeeSet as projection on master.employees;
+entity BusinessPartnerSet as projection on master.businesspartner;
+entity AddressSet as projection on master.address;
+entity POItems as projection on transaction.poitems;
+
+//Action and instance bound
+//since the action is instance bound we will get PO_ID automatically
+entity POs as projection on transaction.purchaseorder
+actions{
+action boost() returns POs;
+};
+
+//Expose the CDS view
+entity ProductSet as projection on CDSViews.ProductView;
+//A non instance bound action--- if you want multiple we will go with the array of actually
+function getMostExpensiveOrder() returns POs;
+   
+}

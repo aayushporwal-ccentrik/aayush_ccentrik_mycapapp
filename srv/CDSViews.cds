@@ -1,6 +1,6 @@
 namespace aayush.views;
 
-using{aayush.db.master, aayush.db.transaction} from './data-model';
+using{aayush.db.master, aayush.db.transaction} from '../db/data-model';
 
 context CDSViews {
     
@@ -29,16 +29,19 @@ context CDSViews {
             {language:'HI', text: 'उत्पाद आईडी'}
         ]
         PRODUCT_ID as ![ProductId],
+
         @EndUserTextLabel: [
             {language:'EN', text: 'Description'},
             {language:'HI', text: 'विवरण'}
         ]
         DESCRIPTION as ![Description],
+
         @EndUserText.Label: [
             {language:'EN', text:'Category'},
             {language:'HI', text:'वर्ग'}
         ]
         CATEGORY as ![Category],
+        
         PRICE as ![Price],
         CURRENCY_CODE as ![CurrencyCode],
         SUPPLIER_GUID.COMPANY_NAME as ![SupplierName]
