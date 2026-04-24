@@ -1,6 +1,6 @@
 NODE_KEY,CITY,POSTAL_CODE,STREET,BUILDING,COUNTRY,ADDRESS_TYPE,VAL_START_DATE,VAL_END_DATE,LATITUDE,LONGITUDE
 addr1,Pune,411001,MG Road,Building A,India,Home,2023-01-01,,18.5204,73.8567
-addr2,Mumbai,400001,Marine Drive,,India,Office,2022-05-01,,19.0760,72.8777
+addr2,New_York,400001,Marine Drive,,USA,Office,2022-05-01,,19.0760,72.8777
 addr3,Bangalore,560001,Brigade Road,Block B,India,Office,2021-03-15,,12.9716,77.5946
-addr4,Delhi,110001,,,,India,Home,,,
-addr5,Chennai,600001,Anna Salai,,India,,,,
+addr4,Berlin,110001,,,Germany,Home,,,52.5200,13.4050
+addr5,Chennai,600001,Anna Salai,,India,,,,,

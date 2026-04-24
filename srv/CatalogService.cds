@@ -1,12 +1,27 @@
 using {aayush.db.master, aayush.db.transaction} from '../db/data-model';
-using { aayush.views.CDSViews } from '../srv/CDSViews';
+using { aayush.views.CDSViews } from '../db/CDSViews';
 
 
 
-service CatalogService @(path : 'CatalogService'){
+service CatalogService @(path : 'CatalogService', requires: 'authenticated-user'){
+
+//@readonly 
+//make Employee table unpadatable and non-deletable 
+// @Capabilities : { 
+//     Updatable: false,
+//     Deletable: false
+//  } 
+    @(restrict:[
+        {grant: ['READ'], to: 'Display', where: 'bankName = $user.BankName'},
+        {grant: ['WRITE'], to: 'Editor'}
+    ])
 entity EmployeeSet as projection on master.employees;
 entity BusinessPartnerSet as projection on master.businesspartner;
+    @(restrict:[
+        {grant: ['READ'], to: 'Viewer', where: 'COUNTRY = $user.Country'},
+    ])
 entity AddressSet as projection on master.address;
+
 entity POItems as projection on transaction.poitems;
 
 //Action and instance bound

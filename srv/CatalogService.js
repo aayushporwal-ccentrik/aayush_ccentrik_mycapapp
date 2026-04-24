@@ -56,6 +56,8 @@ module.exports = cds.service.impl(async function(){
     this.on('boost', async(req)=>{
 
         try {
+           //programmiticaly check that whether the user have the Editor permission 
+            req.user.is('Editor') || req.reject(403)
             const PO_ID = req.params[0];
             console.log('Bro your PO_ID was' + JSON.stringify(req.params));
             const tx = cds.tx(req);
