@@ -43,12 +43,14 @@ modules:
       builder: npm-ci
     requires:
       - name: srv-api
-        group: destination
+        group: destinations
         properties:
           name: srv-api
           strictSSL: true
           forwardAuthToken: true
           url: '~{srv-url}'
+      - name: cap_app-auth
+      
 resources:
   - name: cap_app-db
     type: com.sap.xs.hdi-container
