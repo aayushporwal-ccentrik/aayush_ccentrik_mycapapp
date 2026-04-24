@@ -12,7 +12,7 @@ service CatalogService @(path : 'CatalogService', requires: 'authenticated-user'
 //     Deletable: false
 //  } 
     @(restrict:[
-        {grant: ['READ'], to: 'Display', where: 'bankName = $user.BankName'},
+        {grant: ['READ'], to: 'Viewer', where: 'bankName = $user.BankName'},
         {grant: ['WRITE'], to: 'Editor'}
     ])
 entity EmployeeSet as projection on master.employees;
