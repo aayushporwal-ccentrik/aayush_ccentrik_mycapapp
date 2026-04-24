@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@cap-js/hana": "^2",
+    "@sap/approuter": "^21.3.0",
     "@sap/cds": "^9",
     "@sap/xssec": "^4"
   },
@@ -20,9 +21,9 @@
         "credentials": {
           "url": "db.sqlite"
         },
-          "[production]": {
-    "kind": "hana"
-  }
+        "[production]": {
+          "kind": "hana"
+        }
       },
       "auth": {
         "kind": "mocked",
