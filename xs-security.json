@@ -26,29 +26,28 @@
   "role-templates": [
     {
       "name": "Viewer",
-      "description": "generated",
+      "description": "View all the data",
       "scope-references": [
         "$XSAPPNAME.Viewer"
       ],
-      "attribute-references": []
-    },
-    {
-      "name": "Editor",
-      "description": "generated",
-      "scope-references": [
-        "$XSAPPNAME.Editor"
-      ],
-      "attribute-references": []
-    },
-    {
-      "name": "userattributes",
-      "description": "generated",
-      "default-role-name": "Attributes of a User",
-      "scope-references": [],
       "attribute-references": [
         "BankName",
         "Country"
       ]
+    },
+    {
+      "name": "Editor",
+      "description": "Edit the data",
+      "scope-references": [
+        "$XSAPPNAME.Editor"
+      ],
+      "attribute-references": []
     }
-  ]
+  ],
+
+  "oauth2-configuration": {
+    "redirect-uris": [
+        "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+}
 }

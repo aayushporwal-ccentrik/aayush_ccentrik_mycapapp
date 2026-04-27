@@ -1,12 +1,11 @@
 {
-    "welcomeFile": "/webapp/index.html",
+    "welcomeFile": "/index.html",
     "authenticationMethod": "route",
     "sessionTimeout": 100,
     "routes": [
     {
-         "source": "/webapp/index.html", 
-         "target":"$1",
-         "localDir": "webapp/",
+         "source":  "^/(.*\\.html|.*\\.js|.*\\.css|.*\\.json|.*\\.png|.*\\.ico)$",
+         "localDir": "webapp",
          "authenticationType": "xsuaa"
     },
     

@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "mycapapp",
+			"path": "."
+		},
+		{
+			"name": "aayush_ccentrik_mycapapp",
+			"path": "../aayush_ccentrik_mycapapp"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"driver": "SQLite",
+				"name": "mydb",
+				"database": "mycapapp/db.sqlite"
+			}
+		]
+	}
+}

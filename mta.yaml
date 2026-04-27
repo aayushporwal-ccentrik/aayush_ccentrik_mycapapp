@@ -67,6 +67,10 @@ resources:
         xsappname: 'cap_app-${org}-${space}'
         tenant-mode: dedicated
         oauth2-configuration:
+          # --- BEGIN CHANGE ---
+          redirect-uris:
+            - "https://*.cfapps.us10-001.hana.ondemand.com/**"
+          # --- END CHANGE ---
           credential-types:
             - binding-secret
             - x509
