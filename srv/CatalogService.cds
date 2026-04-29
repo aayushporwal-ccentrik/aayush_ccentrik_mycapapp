@@ -26,7 +26,24 @@ entity POItems as projection on transaction.poitems;
 
 //Action and instance bound
 //since the action is instance bound we will get PO_ID automatically
-entity POs as projection on transaction.purchaseorder
+entity POs as projection on transaction.purchaseorder{
+    *,
+    //Add labels 
+    case OVERALL_STATUS
+        when 'A' then 'Approved'
+        when 'X' then 'Rejected'
+        when 'N' then 'New'
+        else 'Pending'
+    end as OverallStatusText : String(10),
+    
+//Add Color
+    case OVERALL_STATUS
+        when 'A' then 3
+        when 'X' then 1
+        when 'N' then 2
+    else 2
+    end as IconColor: Integer
+}
 actions{
 action boost() returns POs;
 };

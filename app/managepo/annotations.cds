@@ -27,14 +27,29 @@ annotate service.POs with @(
                 },
 
                 {
-        $Type : 'UI.DataField',
+        $Type : 'UI.DataFieldForAction',
         Value : CURRENCY_code,
+        },
+
+                        {
+        $Type : 'UI.DataFieldForAction',
+        Label: 'boost',
+        inline: true,
+        Value : CatalogService.boost,
         },
 
                 {
         $Type : 'UI.DataField',
-        Value : OVERALL_STATUS,
+        Value : OverallStatusText,
+        },
+
+        {
+            $Type : 'UI.DataField',
+            Value : OverallStatusText,
+            Criticality : IconColor, // This adds the semantic color!
         }
+
+        
     ],
 
 UI.HeaderInfo:{

@@ -63,9 +63,9 @@ module.exports = cds.service.impl(async function(){
             const tx = cds.tx(req);
            await tx.update(POs).with({
                 "GROSS_AMOUNT": { '+=' : 2000 }
-            }).where(PO_ID);
+            }).where({ID:PO_ID});
         //after modifying read the instance
-        const reply = tx.read(POs).where(PO_ID);
+        const reply = tx.read(POs).where({ID:PO_ID});
         return reply;
         }
         catch{
