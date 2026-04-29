@@ -7,8 +7,8 @@ using {aayush.commons} from './commons';
 context master
 {     
     entity product {
-    key NODE_KEY: commons.GUID;
-    PRODUCT_ID: String(28);
+    key NODE_KEY: commons.GUID @title : '{i18n > XLBL_}';
+    PRODUCT_ID: String(28) @title : '{i18n > XLBL_}'; 
     TYPE_CODE: String(2);
     CATEGORY: String(32);
     //Adding localized to apply internationalization
@@ -27,15 +27,15 @@ context master
 } 
     entity businesspartner
     {
-        key NODE_KEY : commons.GUID;
+        key NODE_KEY : commons.GUID @title : '{i18n > XLBL_BPKEY}';
         BP_ROLE : String(2);
         EMAIL_ADDRESS : String(105);
         PHONE_NUMBER : String(32);
         FAX_NUMBER : String(32);
         WEB_ADDRESS : String(44);
         BP_ID : String(32);
-        COMPANY_NAME : String(250);
-        ADDRESS_GUID : Association to one address;
+        COMPANY_NAME : String(250) @title : '{i18n > XLBL_}';
+        ADDRESS_GUID : Association to one address @title : '{i18n > XLBL_ADDRKEY}';
     }
 
     entity address
