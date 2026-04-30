@@ -75,8 +75,8 @@ context master
 
 context transaction {
     
-    entity purchaseorder : commons.Amount {
-        key NODE_KEY: commons.GUID @title : '{i18n>XCOL_POKEY}';
+    entity purchaseorder : commons.Amount, cuid {
+       // key NODE_KEY: commons.GUID @title : '{i18n>XCOL_POKEY}';
         PO_ID: String(40) @title : '{i18n>XLBL_POID}';
         PARTNER_GUID: Association to one master.businesspartner;
         LIFECYCLE_STATUS: String(1) @title : '{i18n>LIFESTATUS}';
@@ -84,8 +84,8 @@ context transaction {
         Items: Composition of many poitems on Items.PARENT_KEY = $self;
     };
 
-    entity poitems : commons.Amount {
-        key NODE_KEY: commons.GUID;
+    entity poitems : commons.Amount, cuid {
+      //  key NODE_KEY: commons.GUID;
         PARENT_KEY: Association to one purchaseorder;
         PO_ITEM_POS: Integer @title : '{i18n>ITEMPOS}';
         PRODUCT_GUID: Association to one master.product;

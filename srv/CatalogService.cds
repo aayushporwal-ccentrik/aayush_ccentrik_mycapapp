@@ -26,7 +26,9 @@ entity POItems as projection on transaction.poitems;
 
 //Action and instance bound
 //since the action is instance bound we will get PO_ID automatically
-entity POs as projection on transaction.purchaseorder{
+entity POs @(
+        odata.draft.enabled
+) as projection on transaction.purchaseorder{
     *,
     //Add labels 
     case OVERALL_STATUS
